@@ -28,8 +28,10 @@ public class FileHandle {
         System.out.println("An error has occured");
         return "Error";
     }
-    // Deletes a file, takes input of the filename.
-    public static void deleteFile(String fileName) {
+    /** 
+    * Deletes a file, takes input of the filename. Returns true if successful
+    */
+    public static boolean deleteFile(String fileName) {
         try {
             File f = new File(fileName);
             if (f.delete()) {
@@ -37,9 +39,11 @@ public class FileHandle {
             } else {
                 System.out.println("Failed to delete");
             }
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return false;
     }
 
 
