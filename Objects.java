@@ -6,9 +6,17 @@ public class Objects {
         fireboy.setName("Fireboy");
 
         fireboy.battlecry();
+        HelloWorld.print_line();
 
-        // Inhertied aang, 
+        // Testing inheritance with the avatar. 
         Avatar aang = new Avatar(); 
         aang.battlecry();
+        HelloWorld.print_line();
+
+        // Testing try catch, 
+        // aang.changePower();
+        
     }
+
+
 }
