@@ -24,4 +24,10 @@ public class Bender {
     public void setElement(String element) {
         this.element = element;
     }
+
+    public void battlecry() {
+        System.out.println("I am " + this.getName() + " and a " 
+                           + this.getElement() + " bender with power " + this.getPower()); 
+    }
+
 }

@@ -33,7 +33,7 @@ public class HelloWorld
         // Testing out classes, 
         System.out.println("Testing Classes ");
         Bender aang = new Bender();
-        aang.setName("Avatar");
+        aang.setName("Avatar Aang");
         System.out.println("Bender Name: " + aang.getName());
         aang.setElement("All");
         System.out.println("Bender Element: " + aang.getElement());
@@ -56,5 +56,4 @@ public class HelloWorld
         System.out.println("-----------------------");
     }
     
-
 }
