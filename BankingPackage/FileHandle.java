@@ -1,6 +1,5 @@
 package BankingPackage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * This class will handle the files that contain
@@ -8,7 +7,9 @@ import java.io.IOException;
  */
 public class FileHandle {
     
-    // Will create a file for accounts, returning the path to such file
+    /** 
+     * Creates a file for accounts, returning the path to such file
+     */
     public static String createFile() {
         try {
             String dirName = "C:\\Users\\Aiden Gu\\Desktop\\Programming\\Java\\BankingPackage\\Data";
@@ -28,6 +29,7 @@ public class FileHandle {
         System.out.println("An error has occured");
         return "Error";
     }
+
     /** 
     * Deletes a file, takes input of the filename. Returns true if successful
     */
@@ -46,5 +48,33 @@ public class FileHandle {
         return false;
     }
 
+    // This function writes a string to the file.
+    public static void writeFile(String filePath, String text) {
+        try {
+            FileWriter file = new FileWriter(filePath); 
+            file.write(text); 
+            file.close();
+            System.out.println("Success");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("An error has occured");
+        }
+    }
+
+    // This function writes a num to the file. 
+    public static void writeFile(String filePath, int num) {
+        try {
+            FileWriter file = new FileWriter(filePath);
+            file.write(num);
+            file.close();
+            System.out.println("Success");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("An error has occured");
+        }
+    }
+    public static void readFile(String fileName) {
+        return;
+    }
 
 }

@@ -10,6 +10,16 @@ public class Account {
     private String name; 
     private int balance; 
 
+    public Account(int id, String pass, String name, int balance) {
+        this.setId(id);
+        this.setPass(pass);
+        this.setName(name);
+        this.setBalance(balance);
+    }
+
+    public Account() {
+    }
+
     // Establish Get/Set functions 
     public int getId() {
         return this.id;
