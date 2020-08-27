@@ -1,5 +1,6 @@
 package BankingPackage.Tests;
-import BankingPackage.*;
+import BankingPackage.AccountActions;
+import BankingPackage.Account;
 public class Test_AccountActions {
     public static void main(String args[]) {
         Account test = new Account();
