@@ -31,11 +31,11 @@ public class FileHandle {
     }
 
     /** 
-    * Deletes a file, takes input of the filename. Returns true if successful
+    * Deletes a file, takes input of the file path. Returns true if successful
     */
-    public static boolean deleteFile(String fileName) {
+    public static boolean deleteFile(String filePath) {
         try {
-            File f = new File(fileName);
+            File f = new File(filePath);
             if (f.delete()) {
                 System.out.println("File deleted: " + f.getName());
             } else {
@@ -48,12 +48,20 @@ public class FileHandle {
         return false;
     }
 
-    // This function writes a string to the file.
+    // This function writes a string to the file (APPEND NOT OVERRWRITE)
     public static void writeFile(String filePath, String text) {
         try {
-            FileWriter file = new FileWriter(filePath); 
-            file.write(text); 
-            file.close();
+            File file = new File(filePath); 
+            FileWriter fr = null;
+            if (file.exists()) {
+                fr = new FileWriter(file, true);
+            } else {
+                System.out.println("File does not exist");
+                return;
+            }
+            BufferedWriter br = new BufferedWriter(fr);
+            br.write(text);
+            br.close();
             System.out.println("Success");
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,9 +72,17 @@ public class FileHandle {
     // This function writes a num to the file. 
     public static void writeFile(String filePath, int num) {
         try {
-            FileWriter file = new FileWriter(filePath);
-            file.write(num);
-            file.close();
+            File file = new File(filePath); 
+            FileWriter fr = null;
+            if (file.exists()) {
+                fr = new FileWriter(file, true);
+            } else {
+                System.out.println("File does not exist");
+                return;
+            }
+            BufferedWriter br = new BufferedWriter(fr);
+            br.write(String.valueOf(num));
+            br.close();
             System.out.println("Success");
         } catch (IOException e) {
             e.printStackTrace();
