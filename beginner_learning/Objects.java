@@ -1,3 +1,4 @@
+package beginner_learning;
 public class Objects {
     public static void main(String args[]) {
         Bender fireboy = new Bender(); 
