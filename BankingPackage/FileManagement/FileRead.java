@@ -2,7 +2,6 @@ package BankingPackage.FileManagement;
 
 import java.io.*;
 import BankingPackage.Account;
-import BankingPackage.AccountActions;
 public class FileRead {
     /**
      * This function reads thorugh a file and returns the number of lines read
@@ -49,35 +48,60 @@ public class FileRead {
     /** 
      * This function reads up to a certain id and prints that one account 
      */
-    public static void printAccountById(String filePath, int id) {
+    public static Account FindAccountById(String filePath, int id) {
+        if (FileRead.isDuplicate(filePath, id)) {
+            System.out.println("Sorry, an issue has occured");
+            return null;
+        }
+
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File(filePath)));
             String line = br.readLine();
             while (line != null) {
                 String[] account = line.split(" ");
                 int accountId = Integer.parseInt(account[0]);
-                System.out.println(accountId);
                 if (accountId == id) {
-                    System.out.println("Found account: " + account[0] + " " + account[1] + " ");
-                    Account acc = new Account(accountId, account[1], account[2], Integer.parseInt(account[3]));
-                    AccountActions.printAccount(acc);
+                    System.out.println("Found account, ");
+                    Account acc = new Account(accountId, account[1], 
+                                              account[2], Integer.parseInt(account[3]));
+                    br.close();
+                    return acc;
                 }
+                line = br.readLine();
             }
             br.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }        
+        } 
+        System.out.println("Could not find account");       
+        return null;
     }
 
-    public static boolean isInt(String text) {
-        if (text.isEmpty()) return false;
-        for(int i = 0; i < text.length(); i++) {
-            if(i == 0 && text.charAt(i) == '-') {
-                if(text.length() == 1) return false;
-                else continue;
+    /**
+     * This function searches for duplicates in a certain id and returns -1 for no duplicates, 
+     *  
+     */
+    public static boolean isDuplicate(String filePath, int id) {
+        int i = 0;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(new File(filePath)));
+            String line = br.readLine();
+            while (line != null) {
+                String[] account = line.split(" ");
+                if (Integer.parseInt(account[0]) == id) {
+                    i++;
+                }
+                line = br.readLine();
             }
-            if(Character.digit(text.charAt(i), 10) < 0) return false;
-        }
-        return true;    
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }      
+
+        if (i > 1) {
+            return true;
+        } else {
+            return false;
+        }       
     }
 }

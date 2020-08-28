@@ -27,22 +27,46 @@ public class AccountActions {
          return newBal;
      }
 
-     // Prints account name and balance
-     public static void printAccount(Account acc) {
-         System.out.println("Name: " + acc.getName());
-         System.out.println("Balance: "+ acc.getBalance());
-         return;
-     }
+    // Prints account name and balance
+    public static void printAccount(Account acc) {
+        System.out.println("Name: " + acc.getName());
+        System.out.println("Balance: "+ acc.getBalance());
+        return;
+    }
 
-     // Prints balance of an account
-     public static void printBal(Account acc) {
-         System.out.println(acc.getBalance());
-     }
+    // Prints balance of an account
+    public static void printBal(Account acc) {
+        System.out.println(acc.getBalance());
+    }
 
-     // Prints name of an account
-     public static void printAccName(Account acc) {
-         System.out.println(acc.getName());
-     }
+    // Prints name of an account
+    public static void printAccName(Account acc) {
+        System.out.println(acc.getName());
+    }
+
+    /** 
+     *  This function scans a string input and if it matches an account property, 
+    *  returns an appropriate integer value, enum style for the account property:
+    *  -1 = bad input, 0 = id; 1 = pass; 2 = name; 3 = balance
+    */
+    public static int whatProperty(Account acc, String property) {
+        switch(property.toLowerCase()) {
+            case "id":
+                return 0;
+            case "pass":
+                return 1;
+            case "password":
+                return 1;
+            case "name":
+                return 2;
+            case "bal":
+                return 3;
+            case "balance":
+                return 3;
+            default:
+                return -1;
+        }
+    }
 
      
 }

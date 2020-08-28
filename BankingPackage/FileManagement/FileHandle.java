@@ -17,8 +17,6 @@ public class FileHandle {
             File f = new File(dir, fileName);
             if (f.createNewFile()) {
                 System.out.println("Created file: " + f.getName());
-            } else {
-                System.out.println("File already exists");
             } 
             return f.getPath();
         } catch (IOException e) {

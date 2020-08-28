@@ -48,4 +48,11 @@ public class Account {
     public void setBalance(int balance) {
         this.balance = balance; 
     }
+
+    // This function returns the string of an Account object's members 
+    public String toString() {
+        return this.getId() + " " + this.getPass() + " " + this.getName() + " " + this.getBalance() + " "; 
+    }
+
+    
 }
