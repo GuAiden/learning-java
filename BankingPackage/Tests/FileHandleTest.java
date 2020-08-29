@@ -24,12 +24,12 @@ public class FileHandleTest {
         // FileWrite.appendAccount(file_name, first.toString()); 
 
         // Testing error handling of duplicate accounts in database
-        Account second = FileRead.findAccountById(file_name, 2124);
-        Account newFirst = new Account(2555, "yo", "Johnny", 20000);
+        Account acc = FileRead.findAccountById(file_name, 1999);
         
-        FileWrite.overWriteAcc(file_name, first, newFirst); 
+        // FileWrite.overWriteAcc(file_name, first, newFirst); 
 
         // Testing 
+        FileWrite.changeAccProperty(file_name, acc, "1999", "balance");
 
     }
 

@@ -93,7 +93,7 @@ public class AccountActions {
     *  returns an appropriate integer value, enum style for the account property:
     *  -1 = bad input, 0 = id; 1 = pass; 2 = name; 3 = balance
     */
-    public static int whatProperty(Account acc, String property) {
+    public static int whatProperty(String property) {
         switch(property.toLowerCase()) {
             case "id":
                 return 0;
@@ -111,6 +111,23 @@ public class AccountActions {
                 return -1;
         }
     }
-
+    /** 
+     *  This function changes a certain property given an index, 
+     *  0 = id, 1 = pass, 2 = name, 3 = balance,
+     */
+    public static Account changeProperty(Account acc, int index, String change) {
+        if (index == -1) {
+            return null;
+        }
+        String[] list; 
+        list = new String[4];
+        list[0] = Integer.toString(acc.getId());
+        list[1] = acc.getPass();
+        list[2] = acc.getName();
+        list[3] = Integer.toString(acc.getBalance());
+        list[index] = change;
+        Account updatedAcc = new Account(Integer.parseInt(list[0]), list[1], list[2], Integer.parseInt(list[3]));
+        return updatedAcc;
+    }
      
 }

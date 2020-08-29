@@ -1,4 +1,4 @@
 2124 password John 1000
-2555 yo Johnny 20000
+1999 yo Johnny 1999
 3111 funny Gulad 300
 4222 pass Tony 500

@@ -87,7 +87,10 @@ public class FileWrite {
     
     // This function will change a certain property of an account
     public static void changeAccProperty(String filePath, Account acc, String change, String member) {
-
+        int property = AccountActions.whatProperty(member);
+        Account updatedAcc = AccountActions.changeProperty(acc, property, change);
+        FileWrite.overWriteAcc(filePath, acc, updatedAcc);
+        return;
     }
 
 }
