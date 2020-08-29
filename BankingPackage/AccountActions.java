@@ -29,6 +29,9 @@ public class AccountActions {
 
     // Prints account name and balance
     public static void printAccount(Account acc) {
+        if (acc == null) {
+            return;
+        }
         System.out.println("Name: " + acc.getName());
         System.out.println("Balance: "+ acc.getBalance());
         return;
@@ -42,6 +45,47 @@ public class AccountActions {
     // Prints name of an account
     public static void printAccName(Account acc) {
         System.out.println(acc.getName());
+    }
+
+    public static boolean compareAcc(Account first, Account second) {
+        if (!compareId(first, second)) {
+            return false;
+        } else if (!comparePass(first, second)) {
+            return false;
+        } else if (!compareName(first, second)) {
+            return false;
+        } else if (!compareBal(first, second)) {
+            return false;
+        } else {
+            return true; 
+        }
+    }
+
+    public static boolean compareId(Account first, Account second) {
+        return (first.getId() == second.getId());
+    }
+
+    public static boolean comparePass(Account first, Account second) {
+        String firstPass = first.getPass();
+        if (firstPass.compareTo(second.getPass()) == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean compareName(Account first, Account second) {
+        // Might adjust for lower case
+        String firstName = first.getName();
+        if (firstName.compareTo(second.getName()) == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean compareBal(Account first, Account second) {
+        return (first.getBalance() == second.getBalance()); 
     }
 
     /** 

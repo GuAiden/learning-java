@@ -48,7 +48,7 @@ public class FileRead {
     /** 
      * This function reads up to a certain id and prints that one account 
      */
-    public static Account FindAccountById(String filePath, int id) {
+    public static Account findAccountById(String filePath, int id) {
         if (FileRead.isDuplicate(filePath, id)) {
             System.out.println("Sorry, an issue has occured");
             return null;
@@ -58,7 +58,7 @@ public class FileRead {
             BufferedReader br = new BufferedReader(new FileReader(new File(filePath)));
             String line = br.readLine();
             while (line != null) {
-                String[] account = line.split(" ");
+                String[] account = line.split("\s|\n");
                 int accountId = Integer.parseInt(account[0]);
                 if (accountId == id) {
                     System.out.println("Found account, ");
@@ -79,7 +79,7 @@ public class FileRead {
 
     /**
      * This function searches for duplicates in a certain id and returns -1 for no duplicates, 
-     *  
+     * Potential bug: assumes that there is always a possible int on every line 
      */
     public static boolean isDuplicate(String filePath, int id) {
         int i = 0;
@@ -87,7 +87,7 @@ public class FileRead {
             BufferedReader br = new BufferedReader(new FileReader(new File(filePath)));
             String line = br.readLine();
             while (line != null) {
-                String[] account = line.split(" ");
+                String[] account = line.split("\s|\n");
                 if (Integer.parseInt(account[0]) == id) {
                     i++;
                 }

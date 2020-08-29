@@ -51,8 +51,8 @@ public class Account {
 
     // This function returns the string of an Account object's members 
     public String toString() {
-        return this.getId() + " " + this.getPass() + " " + this.getName() + " " + this.getBalance() + " "; 
+        return this.getId() + " " + this.getPass() + " " + this.getName() + " " + this.getBalance(); 
     }
 
-    
+
 }

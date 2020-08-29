@@ -15,16 +15,21 @@ public class FileHandleTest {
         // FileRead.printFile(file_name);
 
         // Testing finding account
-        Account account = FileRead.FindAccountById(file_name, 3211);
+        Account first = FileRead.findAccountById(file_name, 2125);
 
         // Testing if account was actually found, 
-        AccountActions.printAccount(account);
+        AccountActions.printAccount(first);
 
         // Testing writing to account to file
-        FileWrite.appendAccount(file_name, account.toString()); 
+        // FileWrite.appendAccount(file_name, first.toString()); 
 
         // Testing error handling of duplicate accounts in database
-        Account second = FileRead.FindAccountById(file_name, 2124);
+        Account second = FileRead.findAccountById(file_name, 2124);
+        Account newFirst = new Account(2555, "yo", "Johnny", 20000);
+        
+        FileWrite.overWriteAcc(file_name, first, newFirst); 
+
+        // Testing 
 
     }
 

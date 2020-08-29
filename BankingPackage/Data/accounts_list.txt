@@ -1,9 +1,4 @@
-2124 password John 1000 
-2124 password John 1000 
-2124 password John 1000 
-3211 bungana Aiden 0
-2124 password John 1000 
-2124 password John 1000 
-2124 password John 1000 
-2124 password John 1000 
-2124 password John 1000 3211 bungana Aiden 0 
+2124 password John 1000
+2555 yo Johnny 20000
+3111 funny Gulad 300
+4222 pass Tony 500
