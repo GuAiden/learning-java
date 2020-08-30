@@ -11,7 +11,7 @@ public class FileHandle {
      */    
     public static String createFile() {
         try {
-            String dirName = "C:\\Users\\Aiden Gu\\Desktop\\Programming\\Java\\BankingPackage\\Data";
+            String dirName = "C:\\Users\\Aiden Gu\\Desktop\\Programming\\Java\\BankingPackage\\DataFiles";
             String fileName = "accounts_list.txt";
             File dir = new File(dirName);
             File f = new File(dir, fileName);

@@ -129,5 +129,23 @@ public class AccountActions {
         Account updatedAcc = new Account(Integer.parseInt(list[0]), list[1], list[2], Integer.parseInt(list[3]));
         return updatedAcc;
     }
+
+    /**
+     * This function assumes that the input will be as such, 
+     * "id pass name balance", later on should add functions that
+     * ensure that id is of int type, pass, name, balance are of
+     * correct input. 
+     * @param account_details
+     * @return
+     */
+    public static Account createAccount(String account_details) {
+        String[] input = account_details.split("\s");
+        int id = Integer.parseInt(input[0]); 
+        String pass = input[1]; 
+        String name = input[2];
+        int balance = Integer.parseInt(input[3]); 
+        Account acc = new Account(id, pass, name, balance);
+        return acc;
+    }
      
 }

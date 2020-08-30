@@ -59,26 +59,20 @@ public class FileWrite {
 
             // Now change the account within the string buffer
             String input = inputBuffer.toString();
-
-            String[] splitInput = input.split("\s|\n");
+            String[] splitInput = input.split("\n");
             int size = splitInput.length;
 
             // Find the account to change, 
-            for (int i = 0; i < size; i += 4) {
-                int id = Integer.parseInt(splitInput[i]);
-                String pass = splitInput[i+1];
-                String name = splitInput[i+2];
-                int bal = Integer.parseInt(splitInput[i+3]);
-                
-                Account temp = new Account(id, pass, name, bal); 
+            for (int i = 0; i < size; i++) {
+                Account temp = AccountActions.createAccount(splitInput[i]); 
                 if (AccountActions.compareAcc(temp, predecessor)) {
+                    // Once found, replace the string
                     input = input.replace(predecessor.toString(), successor.toString()); 
                     System.out.println("Successfuly overwritten"); 
                 }
             }
             // Write 
             FileWrite.writeOver(filePath, input);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -92,5 +86,7 @@ public class FileWrite {
         FileWrite.overWriteAcc(filePath, acc, updatedAcc);
         return;
     }
+
+
 
 }
