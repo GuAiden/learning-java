@@ -45,38 +45,17 @@ public class FileWrite {
             System.out.println("Accounts don't exist"); 
             return;
         }
-        try {
-            BufferedReader file = new BufferedReader(new FileReader(filePath)); 
-            StringBuffer inputBuffer = new StringBuffer();
-            String line;
-
-            // Read through the file and add it to the string buffer, 
-            while ((line = file.readLine()) != null) {
-                inputBuffer.append(line);
-                inputBuffer.append('\n'); 
+        String file = FileRead.readFile(filePath);
+        String newFile = new String();
+        Account[] accounts = FileRead.loadListOfAccounts(file); 
+        int numAcc = FileRead.numAccounts(file);
+        for (int i = 0; i < numAcc; i++) {
+            if (AccountActions.compareAcc(predecessor, accounts[i])) {
+                accounts[i] = successor; 
             }
-            file.close();
-
-            // Now change the account within the string buffer
-            String input = inputBuffer.toString();
-            String[] splitInput = input.split("\n");
-            int size = splitInput.length;
-
-            // Find the account to change, 
-            for (int i = 0; i < size; i++) {
-                Account temp = AccountActions.createAccount(splitInput[i]); 
-                if (AccountActions.compareAcc(temp, predecessor)) {
-                    // Once found, replace the string
-                    input = input.replace(predecessor.toString(), successor.toString()); 
-                    System.out.println("Successfuly overwritten"); 
-                }
-            }
-            // Write 
-            FileWrite.writeOver(filePath, input);
-        } catch (IOException e) {
-            e.printStackTrace();
+            newFile = newFile + accounts[i].toString() + "\n";
         }
-        return;
+        FileWrite.writeOver(filePath, newFile);
     }
     
     // This function will change a certain property of an account

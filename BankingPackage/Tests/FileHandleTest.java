@@ -22,6 +22,13 @@ public class FileHandleTest {
         for (int i = 0; i < numAcc ; i++) {
             AccountActions.printAccount(listAcc[i]);
         }
+        System.out.println("\n");
+
+        /**
+         * Testing file write functions
+         */
+        Account newAcc = new Account(2222, "hello", "world", 1);
+        FileWrite.overWriteAcc(file_name, listAcc[1], newAcc);
     }
 
     public static void testCreate() {
