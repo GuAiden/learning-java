@@ -96,7 +96,6 @@ public class FileRead {
     /**
      * This function reads the file and loads in the accounts into a linked list data structure
      */
-
     public static Account[] loadListOfAccounts(String fileContents) {
         Account[] listOfAccounts;
         int numAccounts = FileRead.numAccounts(fileContents);

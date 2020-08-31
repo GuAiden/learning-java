@@ -29,6 +29,8 @@ public class FileHandleTest {
          */
         Account newAcc = new Account(2222, "hello", "world", 1);
         FileWrite.overWriteAcc(file_name, listAcc[1], newAcc);
+        // Testing delete account function
+        FileWrite.deleteAcc(file_name, newAcc);
     }
 
     public static void testCreate() {

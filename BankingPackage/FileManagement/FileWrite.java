@@ -66,6 +66,23 @@ public class FileWrite {
         return;
     }
 
-
+    /**
+     * Deletes an account from file registry. First reads the file,
+     * rewrites the file string and over writes the previous file. 
+     */
+    public static void deleteAcc(String filePath, Account acc) {
+        String file = FileRead.readFile(filePath);
+        Account[] accounts = FileRead.loadListOfAccounts(file); 
+        int numAcc = FileRead.numAccounts(file); 
+        String newFile = new String(); 
+        for (int i = 0; i < numAcc; i++) {
+            if (AccountActions.compareAcc(accounts[i], acc)) { 
+                System.out.println("Successfully deleted: " + accounts[i].toString() + "\n"); 
+                continue;
+            }
+            newFile = newFile + accounts[i].toString() + "\n";
+        }
+        FileWrite.writeOver(filePath, newFile); 
+    }
 
 }
