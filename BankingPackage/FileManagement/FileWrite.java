@@ -4,6 +4,11 @@ import BankingPackage.Account;
 import BankingPackage.AccountActions;
 public class FileWrite {
 
+    /**
+     * Functions writes over a file with a new string 
+     * @param filePath 
+     * @param text
+     */
     public static void writeOver(String filePath, String text) {
         try {
             File file = new File(filePath); 

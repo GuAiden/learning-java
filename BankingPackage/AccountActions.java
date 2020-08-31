@@ -47,6 +47,10 @@ public class AccountActions {
         System.out.println(acc.getName());
     }
 
+    public static void printAccId(Account acc) {
+        System.out.println(acc.getId());
+    }
+
     public static boolean compareAcc(Account first, Account second) {
         if (!compareId(first, second)) {
             return false;

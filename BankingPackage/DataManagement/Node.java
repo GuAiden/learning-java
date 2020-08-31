@@ -1,17 +1,15 @@
 package BankingPackage.DataManagement;
 import BankingPackage.Account;
 
-
-
-public class Node {
+public class Node extends BinaryTree {
     private Account acc;
     private Node left; 
     private Node right;
 
-    public Node (Account acc) {
+    public Node (Account acc, Node left, Node right) {
         this.setAccount(acc);
-        this.setLeft(null);
-        this.setRight(null); 
+        this.setLeft(left);
+        this.setRight(right); 
     }
     public Node () {
     }
@@ -38,7 +36,5 @@ public class Node {
     public void setLeft(Node newLeft) {
         this.right = newLeft;
     }
-
-
 
 }
