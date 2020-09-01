@@ -48,4 +48,9 @@ public class BinaryTree {
             root.insertNode(newAcc, root);
         }
     }
+
+    public Account find(Account newAcc, Node root) {
+        Node node = root.findAcc(newAcc, root);
+        return node.getAccount();
+    }
 }

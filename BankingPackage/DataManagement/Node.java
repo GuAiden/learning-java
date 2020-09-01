@@ -1,6 +1,6 @@
 package BankingPackage.DataManagement;
 import BankingPackage.Account;
-
+import BankingPackage.AccountActions;
 public class Node {
 
     private Account acc;
@@ -52,6 +52,25 @@ public class Node {
             System.out.println("Something wrong has happened");
         }
         return root;
+    }
+
+    public Node findAcc(Account newAcc, Node root) {
+        if (root == null) {
+            System.out.println("Not found");
+            return null; 
+        }
+        Account current = root.getAccount();
+        if (AccountActions.compareAcc(newAcc, current)) {
+            System.out.println("The account exists and belongs to " + current.getName()); 
+            return root; 
+        }
+
+        if (newAcc.getId() < current.getId()) {
+            findAcc(newAcc, root.getLeft());
+        } else if (newAcc.getId() > current.getId()) {
+            findAcc(newAcc, root.getRight());
+        }
+        return root; 
     }
 
 }
