@@ -38,4 +38,20 @@ public class Node {
         this.right = newLeft;
     }
 
+    public Node insertNode(Account newAcc, Node root) {
+        if (root == null) {
+            root = new Node(newAcc, null, null);
+            return root;
+        } 
+        Account current = root.getAccount();
+        if (newAcc.getId() < current.getId()) {
+            root.setLeft(this.insertNode(newAcc, root.getLeft())); 
+        } else if (newAcc.getId() > current.getId()) {
+            root.setRight(this.insertNode(newAcc, root.getRight()));
+        } else {
+            System.out.println("Something wrong has happened");
+        }
+        return root;
+    }
+
 }

@@ -40,23 +40,12 @@ public class BinaryTree {
         AccountActions.printAccId(root.getAccount()); 
         printInOrder(root.getRight());
     }
-    public void insertNode(Account newAcc, Node root) {
+    public void insert(Account newAcc, Node root) {
         if (this.root == null) {
             this.setRoot(new Node(newAcc, null, null));
             return;
-        } else if (root == null) {
-            root = new Node (newAcc, null, null);
-            return;
-        }
-
-        Account current = root.getAccount();
-        if (newAcc.getId() < current.getId()) {
-            this.insertNode(newAcc, root.getLeft()); 
-        } else if (newAcc.getId() > current.getId()) {
-            this.insertNode(newAcc, root.getRight()); 
         } else {
-            System.out.println("Something wrong has occurred, multiple ID's detected");
+            root.insertNode(newAcc, root);
         }
     }
-
 }

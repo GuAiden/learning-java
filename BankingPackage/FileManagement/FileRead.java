@@ -114,7 +114,7 @@ public class FileRead {
         for (int i = 0; i < accounts.length; i++) {
             Account account = AccountActions.createAccount(accounts[i]); 
             Node root = tree.getRoot();
-            tree.insertNode(account, root); 
+            tree.insert(account, root); 
         }
         return tree; 
     }
