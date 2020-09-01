@@ -3,6 +3,7 @@ package BankingPackage.FileManagement;
 import java.io.*;
 import BankingPackage.Account;
 import BankingPackage.AccountActions;
+import BankingPackage.DataManagement.*;
 public class FileRead {
 
     /**
@@ -105,5 +106,16 @@ public class FileRead {
             listOfAccounts[i] = AccountActions.createAccount(accounts[i]);
         }
         return listOfAccounts;
+    }
+
+    public static BinaryTree loadTreeOfAccounts(String fileContents) {
+        BinaryTree tree = new BinaryTree();
+        String[] accounts = fileContents.split("\n");
+        for (int i = 0; i < accounts.length; i++) {
+            Account account = AccountActions.createAccount(accounts[i]); 
+            Node root = tree.getRoot();
+            tree.insertNode(account, root); 
+        }
+        return tree; 
     }
 }

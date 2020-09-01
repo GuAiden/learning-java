@@ -1,7 +1,8 @@
 package BankingPackage.DataManagement;
 import BankingPackage.Account;
 
-public class Node extends BinaryTree {
+public class Node {
+
     private Account acc;
     private Node left; 
     private Node right;
