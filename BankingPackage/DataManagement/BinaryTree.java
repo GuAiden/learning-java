@@ -40,6 +40,7 @@ public class BinaryTree {
         AccountActions.printAccId(root.getAccount()); 
         printInOrder(root.getRight());
     }
+
     public void insert(Account newAcc, Node root) {
         if (this.root == null) {
             this.setRoot(new Node(newAcc, null, null));
@@ -52,5 +53,27 @@ public class BinaryTree {
     public Account find(Account newAcc, Node root) {
         Node node = root.findAcc(newAcc, root);
         return node.getAccount();
+    }
+
+    public void delete(Account acc, Node root) {
+        this.setRoot(root.recDelete(acc, root));
+    }
+
+    public String toString() {
+        if (root == null) {
+            return null;
+        }
+        StringBuffer accounts = new StringBuffer();
+        recToString(this.getRoot(), accounts);
+        return accounts.toString();
+    }
+    public void recToString(Node root, StringBuffer buffer) {
+        if (root == null) {
+            return; 
+        }
+        recToString(root.getLeft(), buffer); 
+        buffer.append(root.getAccount().toString()); 
+        buffer.append("\n");
+        recToString(root.getRight(), buffer); 
     }
 }

@@ -73,4 +73,34 @@ public class Node {
         return root; 
     }
 
+    public Node recDelete(Account acc, Node root) {
+        if (root == null) {
+            return root;
+        }
+        Account current = root.getAccount(); 
+        if (acc.getId() < current.getId()) {
+            root.setLeft(recDelete(acc, root.getLeft())); 
+        } else if (acc.getId() > current.getId()) {
+            root.setRight(recDelete(acc, root.getRight()));
+        } else {
+            if (root.getLeft() == null) {
+                return root.getRight();
+            } else if (root.getRight() == null) {
+                return root.getLeft();
+            }
+            root.setAccount(minValue(root.getRight()));
+            root.setRight(recDelete(acc, root.getRight()));
+        }
+        return root;
+    }
+
+    public Account minValue(Node root) {
+        Account minv = root.getAccount();
+        while (root.getLeft() != null) {
+            minv = root.getLeft().getAccount();
+            root = root.getLeft();
+        }
+        return minv;
+    }
+
 }

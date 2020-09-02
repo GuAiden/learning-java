@@ -11,6 +11,8 @@ public class DataManagementTest {
         tree.printInOrder(tree.getRoot()); 
         Account test = FileRead.findAccountById(file, 2124);
         tree.find(test, tree.getRoot());
-        
+        tree.delete(test, tree.getRoot());
+        tree.printInOrder(tree.getRoot());
+        FileWrite.writeOver(file_name, tree.toString());
     }
 }
