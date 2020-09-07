@@ -53,6 +53,13 @@ public class AccountActions {
         System.out.println(acc.getId());
     }
 
+    /**
+     * This function compares two given accounts and determines
+     * if they're equivalent, i.e. same name, balance, pass, id. 
+     * @param first, First account, 
+     * @param second Second account comparing to first,
+     * @return
+     */
     public static boolean compareAcc(Account first, Account second) {
         if (!compareId(first, second)) {
             return false;
@@ -154,6 +161,13 @@ public class AccountActions {
         return acc;
     }
 
+    /**
+     * This function confirms whether an id and password matches a certain account. 
+     * @param acc, The attempted login account
+     * @param id The input id for the account
+     * @param pass The input password attempting to access account
+     * @return
+     */
     public static boolean confirmLogin(Account acc, int id, char pass[]) {
         if (confirmId(acc, id)) {
             if (confirmPass(acc, pass)) {

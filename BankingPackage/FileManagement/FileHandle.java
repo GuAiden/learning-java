@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class FileHandle {
     /** 
-     * Creates a file for accounts, returning the path to such file
+     * Creates a file for accounts, returning a String of the path to such file
      */    
     public static String createFile() {
         try {
