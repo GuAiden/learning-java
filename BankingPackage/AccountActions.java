@@ -1,5 +1,7 @@
 package BankingPackage;
 
+import java.util.Arrays;
+
 /**
  * This class performs the basic transactional actions that 
  * changes accounts, i.e. Deposit, Withdraw, Print Balance, 
@@ -150,6 +152,22 @@ public class AccountActions {
         int balance = Integer.parseInt(input[3]); 
         Account acc = new Account(id, pass, name, balance);
         return acc;
+    }
+
+    public static boolean confirmLogin(Account acc, int id, char pass[]) {
+        if (confirmId(acc, id)) {
+            if (confirmPass(acc, pass)) {
+                return true;
+            }
+        }
+        return false; 
+    }
+
+    public static boolean confirmId(Account acc, int id) {
+        return acc.getId() == id;
+    }
+    public static boolean confirmPass(Account acc, char pass[]) {
+        return Arrays.equals(acc.getPass().toCharArray(), pass);
     }
      
 }

@@ -2,6 +2,9 @@ package BankingPackage.GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import BankingPackage.FileManagement.*;
+import BankingPackage.Account;
+import BankingPackage.AccountActions;
 public class LoginFrame extends JFrame implements ActionListener {
 
     private Container container = getContentPane();
@@ -16,6 +19,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         setLayoutManager();
         setComponentLocation();
         addComponents();
+        addActionEvent();
         this.setResizable(false);
     }
 
@@ -38,6 +42,11 @@ public class LoginFrame extends JFrame implements ActionListener {
         container.add(passwordField);
         container.add(loginButton);
     }
+
+    public void addActionEvent() {
+        loginButton.addActionListener(this);
+
+    }
     /**
      *
      */
@@ -45,8 +54,25 @@ public class LoginFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        
+        if (e.getSource() == loginButton) {
+            String userText;
+            char passwordText[];
+            userText = userTextField.getText();
+            passwordText = passwordField.getPassword();
+            int id = Integer.parseInt(userText.trim());
+            String filePath = FileHandle.createFile();
+            String file = FileRead.readFile(filePath);
+            Account account = FileRead.findAccountById(file, id);
+            if (AccountActions.confirmLogin(account, id, passwordText)) {
+                JOptionPane.showMessageDialog(this, "Login Successful");
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid User/Pass");
+            }
 
+        }
     }
+
+
     
 }
