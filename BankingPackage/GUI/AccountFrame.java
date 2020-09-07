@@ -46,7 +46,7 @@ public class AccountFrame extends JFrame implements ActionListener  {
         // this.pack();
         this.setVisible(true);
     }
-    
+
     public void setLayoutManager() {
         BorderLayout layout = new BorderLayout();
         jLeft.setLayout(new GridBagLayout());
