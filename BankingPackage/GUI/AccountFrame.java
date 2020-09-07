@@ -8,8 +8,10 @@ import BankingPackage.FileManagement.*;
 public class AccountFrame extends JFrame implements ActionListener  {
 
     private Container container;
+    private CardLayout cards = new CardLayout();
     private JPanel jLeft = new JPanel();
-    private JPanel home = new JPanel();
+    private JPanel cardPanel = new JPanel();
+    private HomePanel home = new HomePanel();
     private JPanel deposit = new JPanel();
     private JPanel withdraw = new JPanel();
     private JPanel buttonPanel = new JPanel();
@@ -25,10 +27,10 @@ public class AccountFrame extends JFrame implements ActionListener  {
     AccountFrame(Account account) {
         setFrame(account);
         setLayoutManager();
+        setCards(account);
         colorPanels();
         setMenuBar();
-        // setComponenetPreferredSizes();
-        addButtonsToPanel();
+        addButtonsToMenu();
         setAlignment();
         addPanels();
     }
@@ -44,13 +46,24 @@ public class AccountFrame extends JFrame implements ActionListener  {
         // this.pack();
         this.setVisible(true);
     }
+    
     public void setLayoutManager() {
         BorderLayout layout = new BorderLayout();
         jLeft.setLayout(new GridBagLayout());
-        home.setLayout(new CardLayout());
+        cardPanel.setLayout(cards);
         buttonPanel.setLayout(new GridLayout(3, 1));
         this.setLayout(layout);
     }
+
+    public void setCards(Account account) {
+        home = new HomePanel(account);
+        cardPanel.add(home, "1");
+        cardPanel.add(deposit, "2");
+        cardPanel.add(withdraw, "3");
+        cards.show(cardPanel, "1");
+    }
+
+
 
     public GridBagConstraints setMenuBar() {
         GridBagConstraints c = new GridBagConstraints();
@@ -69,7 +82,7 @@ public class AccountFrame extends JFrame implements ActionListener  {
         jLeft.add(buttonPanel, c);
         return c;
     }
-    public void addButtonsToPanel() {
+    public void addButtonsToMenu() {
         buttonPanel.add(homeButton);
         buttonPanel.add(depositButton);
         buttonPanel.add(withdrawButton);
@@ -78,22 +91,20 @@ public class AccountFrame extends JFrame implements ActionListener  {
         headerLabel.setHorizontalAlignment(JLabel.CENTER);
         headerLabel.setBorder(BorderFactory.createLineBorder(new Color(65, 79, 209)));
     }
-    public void setComponenetPreferredSizes() {
-        home.setPreferredSize(new Dimension(600, 600));
-        jLeft.setPreferredSize(new Dimension(200, 600)); 
-    }
+
     public void colorPanels() {;
         Color modernBlack = new Color(43, 45, 47);
         jLeft.setBackground(Color.BLACK);
-        home.setBackground(modernBlack);
+
+        withdraw.setBackground(modernBlack);
+        deposit.setBackground(modernBlack);
+
         accountActions.setForeground(Color.WHITE); 
         headerLabel.setForeground(Color.WHITE);
         balance.setForeground(Color.WHITE);
-
-
     }
     public void addPanels() {
-        container.add(home, BorderLayout.CENTER);
+        container.add(cardPanel, BorderLayout.CENTER);
         container.add(jLeft, BorderLayout.WEST);
     }
 
