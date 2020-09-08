@@ -1,4 +1,4 @@
-2124 password John 3900
-2222 hello world 1
+2124 password John 3000
+2222 hello world -48
 3111 funny Gulad 300
 4222 pass Tony 31200

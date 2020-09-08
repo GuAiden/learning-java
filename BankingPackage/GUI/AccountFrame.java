@@ -14,7 +14,7 @@ public class AccountFrame extends JFrame implements ActionListener  {
     private JPanel cardPanel = new JPanel();
     private HomePanel home = new HomePanel();
     private DepositPanel deposit = new DepositPanel();
-    private JPanel withdraw = new JPanel();
+    private WithdrawPanel withdraw = new WithdrawPanel();
     private JPanel buttonPanel = new JPanel();
 
     private JLabel accountActions = new JLabel("Account Actions");
@@ -67,6 +67,7 @@ public class AccountFrame extends JFrame implements ActionListener  {
     public void setCards(Account account) {
         home = new HomePanel(account);
         deposit = new DepositPanel(account);
+        withdraw = new WithdrawPanel(account);
         cardPanel.add(home, "1");
         cardPanel.add(deposit, "2");
         cardPanel.add(withdraw, "3");
@@ -92,12 +93,12 @@ public class AccountFrame extends JFrame implements ActionListener  {
         jLeft.add(buttonPanel, c);
         return c;
     }
+
     public void addButtonsToMenu() {
         buttonPanel.add(homeButton);
         buttonPanel.add(depositButton);
         buttonPanel.add(withdrawButton);
     }
-
 
     public void colorPanels() {;
         Color modernBlack = new Color(43, 45, 47);
@@ -109,6 +110,7 @@ public class AccountFrame extends JFrame implements ActionListener  {
         accountActions.setForeground(Color.WHITE); 
 
     }
+
     public void addPanels() {
         container.add(cardPanel, BorderLayout.CENTER);
         container.add(jLeft, BorderLayout.WEST);
@@ -117,6 +119,7 @@ public class AccountFrame extends JFrame implements ActionListener  {
     public void addActionEvent() {
         depositButton.addActionListener(this);
         homeButton.addActionListener(this);
+        withdrawButton.addActionListener(this);
     }
 
     @Override
@@ -128,11 +131,17 @@ public class AccountFrame extends JFrame implements ActionListener  {
             cards.show(cardPanel, "2");
         }
         if (e.getSource() == homeButton) {
-            // this.setCards();
+            
             updateAccount(this.account);
             home = new HomePanel(this.account);
             cardPanel.add(home, "1");
             cards.show(cardPanel, "1");
+        }
+        if (e.getSource() == withdrawButton) {
+            updateAccount(this.account);
+            withdraw = new WithdrawPanel(this.account);
+            cardPanel.add(withdraw, "3");
+            cards.show(cardPanel, "3");
         }
     }
 

@@ -22,6 +22,7 @@ public class HomePanel extends JPanel {
     public void setLayout() {
         this.setLayout(new GridBagLayout());
     }
+    
     public void setColor() {
         this.setBackground(new Color(43, 45, 47));
     }
