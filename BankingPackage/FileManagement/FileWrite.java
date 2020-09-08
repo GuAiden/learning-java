@@ -44,13 +44,16 @@ public class FileWrite {
     }
 
     /**  
-     * This function will overwrite an old account with a new successor account
+     * This function will overwrite an old account with a new successor account, returns true if successful,
+     * otherwise it returns false. 
      * */
-    public static void overWriteAcc(String filePath, Account predecessor, Account successor) {
+    public static boolean overWriteAcc(String filePath, Account predecessor, Account successor) {
         // Read file, change line, then overwrite existing file, 
+        boolean didWrite = false; 
         if (predecessor == null || successor == null) {
             System.out.println("Accounts don't exist"); 
-            return;
+            didWrite = false;
+            return didWrite;
         }
         String file = FileRead.readFile(filePath);
         String newFile = new String();
@@ -59,10 +62,12 @@ public class FileWrite {
         for (int i = 0; i < numAcc; i++) {
             if (AccountActions.compareAcc(predecessor, accounts[i])) {
                 accounts[i] = successor; 
+                didWrite = true;
             }
             newFile = newFile + accounts[i].toString() + "\n";
         }
         FileWrite.writeOver(filePath, newFile);
+        return didWrite;
     }
     
     // This function will change a certain property of an account

@@ -79,11 +79,17 @@ public class DepositPanel extends JPanel implements ActionListener {
             String numDeposit = textAmount.getText().trim();
 
             if (StringManage.isInteger(numDeposit)) {
+                
                 String filePath = FileHandle.createFile();
                 Account successor = AccountActions.createAccount(this.account.toString());
                 AccountActions.deposit(successor, Integer.parseInt(numDeposit));
-                FileWrite.overWriteAcc(filePath, this.account, successor);
-                JOptionPane.showMessageDialog(this, "Successfully deposited: " + numDeposit);
+
+                if (FileWrite.overWriteAcc(filePath, this.account, successor) == false) {
+                    JOptionPane.showMessageDialog(this, "Something wrong has occurred");                
+                } else {
+                    JOptionPane.showMessageDialog(this, "Successfully deposited: " + numDeposit);
+                }
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid number");
             }

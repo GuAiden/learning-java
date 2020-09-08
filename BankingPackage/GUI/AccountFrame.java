@@ -122,6 +122,9 @@ public class AccountFrame extends JFrame implements ActionListener  {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == depositButton) {
+            updateAccount(this.account);
+            deposit = new DepositPanel(this.account);
+            cardPanel.add(deposit, "2");
             cards.show(cardPanel, "2");
         }
         if (e.getSource() == homeButton) {
