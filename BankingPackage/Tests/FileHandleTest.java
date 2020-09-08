@@ -27,10 +27,9 @@ public class FileHandleTest {
         /**
          * Testing file write functions
          */
-        Account newAcc = new Account(2222, "hello", "world", 1);
-        FileWrite.overWriteAcc(file_name, listAcc[1], newAcc);
+        Account newAcc = new Account(2103, "test", "testName", 10);
+        FileWrite.appendAccount(file_name, newAcc.toString());
         // Testing delete account function
-        FileWrite.deleteAcc(file_name, newAcc);
     }
 
     public static void testCreate() {

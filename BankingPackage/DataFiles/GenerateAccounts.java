@@ -19,14 +19,14 @@ public class GenerateAccounts {
         
         GenerateAccounts generate = new GenerateAccounts(); 
         // Generate 1000 accounts, 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 50; i++) {
             int id = generate.idGenerate(i);
             String pass = generate.passGenerate();
             String name = generate.nameGenerate();
             int balance = generate.balGenerate();
             String account_details = Integer.toString(id) + " " + pass + " " + name + " " + Integer.toString(balance);
-            Account account = AccountActions.createAccount(account_details);
-            
+            String filePath = FileHandle.createFile();
+            FileWrite.appendAccount(filePath, account_details);
         }
 
 

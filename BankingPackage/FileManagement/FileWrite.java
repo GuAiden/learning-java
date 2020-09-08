@@ -22,7 +22,9 @@ public class FileWrite {
             System.out.println("An error has occured");
         }                
     }
-    // This function appends an account to a file, adding a new line after.
+    /** 
+     * This function appends an account to a file on a new line
+     */
     public static void appendAccount(String filePath, String text) {
         try {
             File file = new File(filePath); 
@@ -34,7 +36,7 @@ public class FileWrite {
                 return;
             }
             BufferedWriter br = new BufferedWriter(fr);
-            br.write(text); 
+            br.write("\n"+text); 
             br.close();
             System.out.println("Appended to " + filePath + ": \n" + text);
         } catch (IOException e) {
@@ -70,7 +72,9 @@ public class FileWrite {
         return didWrite;
     }
     
-    // This function will change a certain property of an account
+    /**
+     * This function will change a certain property of an account
+     */
     public static void changeAccProperty(String filePath, Account acc, String change, String member) {
         int property = AccountActions.whatProperty(member);
         Account updatedAcc = AccountActions.changeProperty(acc, property, change);
