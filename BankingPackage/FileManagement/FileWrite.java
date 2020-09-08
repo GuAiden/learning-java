@@ -43,7 +43,9 @@ public class FileWrite {
         }        
     }
 
-    // This function will overwrite an old account with a new successor account
+    /**  
+     * This function will overwrite an old account with a new successor account
+     * */
     public static void overWriteAcc(String filePath, Account predecessor, Account successor) {
         // Read file, change line, then overwrite existing file, 
         if (predecessor == null || successor == null) {

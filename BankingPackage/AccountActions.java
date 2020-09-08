@@ -120,6 +120,8 @@ public class AccountActions {
                 return 3;
             case "balance":
                 return 3;
+            case "deposit":
+                return 3;
             default:
                 return -1;
         }

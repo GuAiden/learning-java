@@ -7,16 +7,16 @@ import BankingPackage.FileManagement.*;
 
 public class AccountFrame extends JFrame implements ActionListener  {
 
+    private Account account; 
     private Container container;
     private CardLayout cards = new CardLayout();
     private JPanel jLeft = new JPanel();
     private JPanel cardPanel = new JPanel();
     private HomePanel home = new HomePanel();
-    private JPanel deposit = new JPanel();
+    private DepositPanel deposit = new DepositPanel();
     private JPanel withdraw = new JPanel();
     private JPanel buttonPanel = new JPanel();
-    private JLabel headerLabel;
-    private JLabel balance; 
+
     private JLabel accountActions = new JLabel("Account Actions");
     private JButton homeButton = new JButton("Home");
     private JButton depositButton = new JButton("Deposit");
@@ -25,25 +25,34 @@ public class AccountFrame extends JFrame implements ActionListener  {
     private static final long serialVersionUID = 1L;
 
     AccountFrame(Account account) {
+        updateAccount(account);
         setFrame(account);
         setLayoutManager();
         setCards(account);
         colorPanels();
         setMenuBar();
         addButtonsToMenu();
-        setAlignment();
         addPanels();
+        addActionEvent();
+    }
+
+    public void updateAccount(Account account) {
+        int id = account.getId();
+        String filePath = FileHandle.createFile();
+        String file = FileRead.readFile(filePath);
+        Account updated = FileRead.findAccountById(file, id);
+        this.account = updated; 
     }
 
     public void setFrame(Account account) {
         this.container = getContentPane();
-        this.headerLabel = new JLabel(account.getName() + " " + "Bank Account");
-        this.balance = new JLabel(Integer.toString(account.getBalance())); 
+
         this.setTitle("Account Manager");
         this.setBounds(0, 0, 900, 600);
+        this.setPreferredSize(new Dimension(600, 400));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(true);
-        // this.pack();
+        this.pack();
         this.setVisible(true);
     }
 
@@ -57,6 +66,7 @@ public class AccountFrame extends JFrame implements ActionListener  {
 
     public void setCards(Account account) {
         home = new HomePanel(account);
+        deposit = new DepositPanel(account);
         cardPanel.add(home, "1");
         cardPanel.add(deposit, "2");
         cardPanel.add(withdraw, "3");
@@ -87,10 +97,7 @@ public class AccountFrame extends JFrame implements ActionListener  {
         buttonPanel.add(depositButton);
         buttonPanel.add(withdrawButton);
     }
-    public void setAlignment() {
-        headerLabel.setHorizontalAlignment(JLabel.CENTER);
-        headerLabel.setBorder(BorderFactory.createLineBorder(new Color(65, 79, 209)));
-    }
+
 
     public void colorPanels() {;
         Color modernBlack = new Color(43, 45, 47);
@@ -100,17 +107,30 @@ public class AccountFrame extends JFrame implements ActionListener  {
         deposit.setBackground(modernBlack);
 
         accountActions.setForeground(Color.WHITE); 
-        headerLabel.setForeground(Color.WHITE);
-        balance.setForeground(Color.WHITE);
+
     }
     public void addPanels() {
         container.add(cardPanel, BorderLayout.CENTER);
         container.add(jLeft, BorderLayout.WEST);
     }
 
+    public void addActionEvent() {
+        depositButton.addActionListener(this);
+        homeButton.addActionListener(this);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() == depositButton) {
+            cards.show(cardPanel, "2");
+        }
+        if (e.getSource() == homeButton) {
+            // this.setCards();
+            updateAccount(this.account);
+            home = new HomePanel(this.account);
+            cardPanel.add(home, "1");
+            cards.show(cardPanel, "1");
+        }
     }
 
     public static void main(String args[]) {

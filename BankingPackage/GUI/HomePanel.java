@@ -40,7 +40,7 @@ public class HomePanel extends JPanel {
 
     public void addComponents() {
         GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.HORIZONTAL;
+        c.fill = GridBagConstraints.BOTH;
         c.anchor = GridBagConstraints.PAGE_START;
         c.insets = new Insets(10, 10, 10, 10);
         c.gridx = 0;
@@ -49,8 +49,9 @@ public class HomePanel extends JPanel {
         c.weighty = 0.2;
         this.add(welcomeLabel, c);
         c.anchor = GridBagConstraints.CENTER;
-        c.weightx = 0.8;
-        c.weighty = 0.8;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.5;
+        c.weighty = 0.5;
         c.gridx = 0;
         c.gridy = 1;
         this.add(balanceLabel, c);
