@@ -9,8 +9,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 package BankingPackage;
-import BankingPackage.DataManagement.*;
-import BankingPackage.FileManagement.*;
 import BankingPackage.GUI.*;
 
 public class Main {
