@@ -7,5 +7,7 @@
 ![Recordit GIF](https://recordit.co/QD8fhXCrR5.gif)
 
 ## Accounts file
+> Accounts are written as an id, password, name, balance as such, 
 
 ![Alt text](/bin/accounts.png?raw=true "Accounts")
+

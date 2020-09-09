@@ -1,9 +1,9 @@
 package BankingPackage.GUI;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+
 import BankingPackage.Account;
-import BankingPackage.FileManagement.*;
+
 
 public class HomePanel extends JPanel {
 
@@ -22,7 +22,7 @@ public class HomePanel extends JPanel {
     public void setLayout() {
         this.setLayout(new GridBagLayout());
     }
-    
+
     public void setColor() {
         this.setBackground(new Color(43, 45, 47));
     }
