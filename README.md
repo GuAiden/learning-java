@@ -8,4 +8,4 @@
 
 ## Accounts file
 
-> ![Alt text](/relative/bin/accounts.png?raw=true "Optional Title")
+> ![Alt text](/BankingPackage/bin/accounts.png?raw=true "Accounts")
