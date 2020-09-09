@@ -1,4 +1,6 @@
 # learning-java
 
-A small java project working its way up. 
+# Learning Java through a banking manager
+
+> A first java project with some messy documentation.
 
