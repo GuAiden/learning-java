@@ -6,4 +6,6 @@
 
 ![Recordit GIF](https://recordit.co/QD8fhXCrR5.gif)
 
+## Accounts file
 
+> ![Alt text](/relative/bin/accounts.png?raw=true "Optional Title")
