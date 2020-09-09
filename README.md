@@ -8,4 +8,4 @@
 
 ## Accounts file
 
-> ![Alt text](/BankingPackage/bin/accounts.png?raw=true "Accounts")
+![Alt text](/relative/BankingPackage/bin/accounts.png?raw=true "Accounts")
