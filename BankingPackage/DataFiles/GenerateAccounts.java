@@ -19,7 +19,7 @@ public class GenerateAccounts {
         
         GenerateAccounts generate = new GenerateAccounts(); 
         // Generate 1000 accounts, 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 900; i++) {
             int id = generate.idGenerate(i);
             String pass = generate.passGenerate();
             String name = generate.nameGenerate();
@@ -28,6 +28,7 @@ public class GenerateAccounts {
             String filePath = FileHandle.createFile();
             FileWrite.appendAccount(filePath, account_details);
         }
+        
 
 
     }
@@ -50,6 +51,7 @@ public class GenerateAccounts {
                 name = new StringBuilder();
             }
         }
+        name_identifiers.add(name.toString());
         return name.toString();
     }
 
@@ -71,6 +73,7 @@ public class GenerateAccounts {
         if (id_identifiers.contains(id)) {
             id = idGenerate(index);
         }
+        id_identifiers.add(id);
         return id;
     }
 
@@ -78,4 +81,5 @@ public class GenerateAccounts {
         int balance = rand.nextInt(10000);
         return balance;
     }
+
 }

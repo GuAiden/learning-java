@@ -35,7 +35,7 @@ public class Node {
         return this.left;
     } 
     public void setLeft(Node newLeft) {
-        this.right = newLeft;
+        this.left = newLeft;
     }
 
     public Node insertNode(Account newAcc, Node root) {
@@ -45,9 +45,9 @@ public class Node {
         } 
         Account current = root.getAccount();
         if (newAcc.getId() < current.getId()) {
-            root.setLeft(this.insertNode(newAcc, root.getLeft())); 
+            root.setLeft(insertNode(newAcc, root.getLeft())); 
         } else if (newAcc.getId() > current.getId()) {
-            root.setRight(this.insertNode(newAcc, root.getRight()));
+            root.setRight(insertNode(newAcc, root.getRight()));
         } else {
             System.out.println("Something wrong has happened");
         }

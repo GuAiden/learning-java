@@ -108,6 +108,9 @@ public class FileRead {
         return listOfAccounts;
     }
 
+    /**
+     * Reads through a list of accouts and loads them into a tree 
+     */ 
     public static BinaryTree loadTreeOfAccounts(String fileContents) {
         BinaryTree tree = new BinaryTree();
         String[] accounts = fileContents.split("\n");
